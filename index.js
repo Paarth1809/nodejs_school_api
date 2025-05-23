@@ -3,6 +3,11 @@ const mysql = require('mysql2');
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Node.js School API is running!');
+});
+
+
 // MySQL connection
 const db = mysql.createConnection({
   host: 'localhost',
