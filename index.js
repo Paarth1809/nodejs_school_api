@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
@@ -11,21 +10,16 @@ app.get('/', (req, res) => {
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-  port: process.env.MYSQL_PORT || 3306 // Default MySQL port is 3306
+  host: 'localhost',
+  user: 'schooluser',
+  password: 'kira10',
+  database: 'schooldb'
 });
 
 
 // Connect to MySQL
-// Connect to MySQL
 db.connect(err => {
-  if (err) {
-    console.error('MySQL connection error:', err);
-    process.exit(1); // Exit the app if DB connection fails
-  }
+  if (err) throw err;
   console.log('Connected to MySQL');
 });
 
