@@ -10,10 +10,11 @@ app.get('/', (req, res) => {
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'schooluser',
-  password: 'kira10',
-  database: 'schooldb'
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT || 3306 // Default MySQL port is 3306
 });
 
 
