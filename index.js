@@ -14,13 +14,17 @@ const db = mysql.createConnection({
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
-  port: process.env.MYSQLPORT || 3306 // Default MySQL port is 3306
+  port: process.env.MYSQL_PORT || 3306 // Default MySQL port is 3306
 });
 
 
 // Connect to MySQL
+// Connect to MySQL
 db.connect(err => {
-  if (err) throw err;
+  if (err) {
+    console.error('MySQL connection error:', err);
+    process.exit(1); // Exit the app if DB connection fails
+  }
   console.log('Connected to MySQL');
 });
 
